@@ -78,12 +78,12 @@ const Partners = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Nos <span className="text-secondary">Partenaires</span>
+              Nos <span className="text-primary">Partenaires</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Nous collaborons avec des partenaires internationaux de confiance pour offrir les meilleures solutions énergétiques et environnementales.
             </p>
-            <div className="w-24 h-1 bg-gradient-secondary mx-auto rounded-full mt-6" />
+            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
           </div>
 
           {/* Partners Grid */}
@@ -91,7 +91,7 @@ const Partners = () => {
             {partners.map((partner, index) => (
               <div
                 key={partner.name}
-                className="group p-6 bg-card rounded-xl border border-border hover:border-secondary/30 transition-all duration-300 hover-lift flex flex-col items-center text-center"
+                className="group p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-300 hover-lift flex flex-col items-center text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="w-20 h-20 mb-4 rounded-lg bg-background flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
@@ -101,7 +101,7 @@ const Partners = () => {
                     className="w-full h-full object-contain p-1"
                   />
                 </div>
-                <h4 className="font-heading font-semibold text-sm mb-1 group-hover:text-secondary transition-colors">
+                <h4 className="font-heading font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
                   {partner.name}
                 </h4>
                 <span className="text-muted-foreground text-xs">{partner.country}</span>

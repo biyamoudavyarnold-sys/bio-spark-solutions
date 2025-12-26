@@ -46,11 +46,16 @@ const Services = () => {
     {
       name: "BIOENERGIES TRAITEMENT-TRANSFORMATION & PRODUCTION",
       description: "S'occupe du traitement et de la transformation des déchets pour la production du biogaz, de l'électricité verte et des engrais écologiques.",
-      color: "secondary",
+      color: "black",
     },
     {
       name: "BIOENERGIES DISTRIBUTION",
       description: "Chargée de la distribution et la commercialisation de nos produits.",
+      color: "secondary",
+    },
+    {
+      name: "BIOENERGIES SOLAR",
+      description: "Spécialisée dans les solutions d'énergie solaire et les installations photovoltaïques.",
       color: "accent",
     },
   ];
@@ -97,7 +102,7 @@ const Services = () => {
             <div className="w-16 h-1 bg-gradient-secondary mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {subsidiaries.map((subsidiary, index) => (
               <div
                 key={subsidiary.name}
@@ -106,6 +111,8 @@ const Services = () => {
                     ? "border-primary bg-primary/5 hover:bg-primary/10"
                     : subsidiary.color === "secondary"
                     ? "border-secondary bg-secondary/5 hover:bg-secondary/10"
+                    : subsidiary.color === "black"
+                    ? "border-foreground bg-foreground/5 hover:bg-foreground/10"
                     : "border-accent bg-accent/5 hover:bg-accent/10"
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -115,6 +122,8 @@ const Services = () => {
                     ? "text-primary"
                     : subsidiary.color === "secondary"
                     ? "text-secondary"
+                    : subsidiary.color === "black"
+                    ? "text-foreground"
                     : "text-accent-dark"
                 }`}>
                   {subsidiary.name}

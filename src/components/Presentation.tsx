@@ -85,7 +85,7 @@ const Presentation = () => {
 
           {/* Mission & Vision */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="p-8 bg-gradient-primary rounded-2xl text-primary-foreground">
+            <div className="p-8 bg-secondary-dark rounded-2xl text-secondary-foreground">
               <div className="flex items-center gap-3 mb-4">
                 <Target className="w-8 h-8" />
                 <h3 className="font-heading font-bold text-2xl">Notre Mission</h3>
