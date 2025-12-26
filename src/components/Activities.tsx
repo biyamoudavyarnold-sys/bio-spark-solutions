@@ -1,4 +1,5 @@
-import { Calendar, MapPin, Users } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, MapPin, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import siteVisit from "@/assets/site-visit.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
@@ -15,6 +16,155 @@ import managerQualite from "@/assets/manager-qualite.jpg";
 import managerInformatiques from "@/assets/manager-informatiques.jpg";
 import managerJuridique from "@/assets/manager-juridique.jpg";
 import managerEnvironnement from "@/assets/manager-environnement.jpg";
+
+const teamMembers = [
+  { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", photo: managerAdministratif },
+  { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines", photo: managerRH },
+  { name: "Ampère Claude NTONSI KOUBEYA", title: "Manager Exploitation", photo: managerExploitation },
+  { name: "Nidel Steeve MOUANDZA MAKEMI", title: "Manager Opérations", photo: managerOperations },
+  { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing", photo: managerCommercial },
+  { name: "Jean-Bernard MADZOU", title: "Manager Qualité-Hygiène Sécurité-Environnement & Énergétique", photo: managerQualite },
+  { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", photo: managerInformatiques },
+  { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", photo: managerJuridique },
+  { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement", photo: managerEnvironnement },
+  { name: "", title: "Responsable du Laboratoire", photo: null },
+];
+// Team Carousel Component
+const TeamCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const membersWithPhotos = teamMembers.filter(m => m.photo !== null);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % membersWithPhotos.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, membersWithPhotos.length]);
+
+  const goToPrev = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev - 1 + membersWithPhotos.length) % membersWithPhotos.length);
+  };
+
+  const goToNext = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev + 1) % membersWithPhotos.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setIsAutoPlaying(false);
+    setCurrentIndex(index);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto mb-16">
+      <div 
+        className="relative rounded-2xl overflow-hidden shadow-card bg-card"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+      >
+        {/* Main Image Container */}
+        <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+          {membersWithPhotos.map((member, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                index === currentIndex 
+                  ? "opacity-100 scale-100 z-10" 
+                  : index === (currentIndex - 1 + membersWithPhotos.length) % membersWithPhotos.length
+                    ? "opacity-0 scale-95 -translate-x-full z-0"
+                    : "opacity-0 scale-95 translate-x-full z-0"
+              }`}
+            >
+              <img
+                src={member.photo!}
+                alt={member.name}
+                className="w-full h-full object-contain bg-gradient-to-b from-muted to-background"
+              />
+            </div>
+          ))}
+          
+          {/* Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent z-20" />
+          
+          {/* Member Info */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-30">
+            <div className="transform transition-all duration-500">
+              <h4 className="font-heading font-bold text-xl md:text-2xl text-primary-foreground mb-2">
+                {membersWithPhotos[currentIndex]?.name}
+              </h4>
+              <p className="text-primary font-medium text-sm md:text-base">
+                {membersWithPhotos[currentIndex]?.title}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-background/20 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-background/20 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+        </div>
+
+        {/* Thumbnail Navigation */}
+        <div className="bg-card p-4 border-t border-border">
+          <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2">
+            {membersWithPhotos.map((member, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`relative flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                  index === currentIndex 
+                    ? "border-primary ring-2 ring-primary/30 scale-110" 
+                    : "border-transparent opacity-60 hover:opacity-100 hover:border-muted-foreground/30"
+                }`}
+              >
+                <img
+                  src={member.photo!}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Dots */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+          {membersWithPhotos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex 
+                  ? "w-8 bg-primary" 
+                  : "w-1.5 bg-primary-foreground/40 hover:bg-primary-foreground/60"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Caption */}
+      <p className="text-center text-muted-foreground mt-4 text-sm">
+        Les photos de l'équipe de pilotage BIOENERGIES CONGO
+      </p>
+    </div>
+  );
+};
 
 const Activities = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -150,22 +300,8 @@ const Activities = () => {
               </div>
             </div>
 
-            {/* Team Group Photo */}
-            <div className="max-w-4xl mx-auto mb-16">
-              <div className="relative rounded-2xl overflow-hidden shadow-card group">
-                <img
-                  src={pilotTeam}
-                  alt="Équipe de pilotage BIOENERGIES CONGO"
-                  className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-primary-foreground font-heading font-semibold text-lg">
-                    Les photos de l'équipe de pilotage BIOENERGIES CONGO
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Team Carousel */}
+            <TeamCarousel />
 
             {/* Individual Team Members */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
