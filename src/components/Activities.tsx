@@ -169,12 +169,12 @@ const Activities = () => {
 
             {/* Individual Team Members */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {[
+            {[
                 { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", photo: managerAdministratif },
-                { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines", photo: managerRH },
+                { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines", photo: managerCommercial },
                 { name: "Ampère Claude NTONSI KOUBEYA", title: "Manager Exploitation", photo: managerExploitation },
                 { name: "Nidel Steeve MOUANDZA MAKEMI", title: "Manager Opérations", photo: managerOperations },
-                { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing", photo: managerCommercial },
+                { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing", photo: managerRH },
                 { name: "Jean-Bernard MADZOU", title: "Manager Qualité-Hygiène Sécurité-Environnement & Énergétique", photo: managerQualite },
                 { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", photo: managerInformatiques },
                 { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", photo: managerJuridique },
