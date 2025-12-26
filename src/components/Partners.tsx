@@ -1,5 +1,14 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import logoImage from "@/assets/logo-bioenergies.png";
+import partnerBiocarbone from "@/assets/partner-biocarbone.jpg";
+import partnerMagma from "@/assets/partner-magma.jpg";
+import partnerBuscolog from "@/assets/partner-buscolog.jpg";
+import partnerBdeac from "@/assets/partner-bdeac.jpg";
+import partnerSittra from "@/assets/partner-sittra.jpg";
+import partnerRsm from "@/assets/partner-rsm.jpg";
+import partnerIsnb from "@/assets/partner-isnb.jpg";
+import partnerGzb from "@/assets/partner-gzb.jpg";
+import partnerCongAgricole from "@/assets/partner-congolaise-agricole.jpg";
+import partnerSieene from "@/assets/partner-sieene.jpg";
 
 const Partners = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -8,32 +17,52 @@ const Partners = () => {
     {
       name: "BIOCARBONE R&D",
       country: "France",
-      logo: logoImage, // Will be replaced with actual partner logo
+      logo: partnerBiocarbone,
     },
     {
       name: "MAGMA ENERGY",
       country: "France",
-      logo: null,
+      logo: partnerMagma,
     },
     {
-      name: "ROTEK MANAGEMENT LTD",
-      country: "Canada",
-      logo: null,
-    },
-    {
-      name: "FRISOMAT",
-      country: "Belgique",
-      logo: null,
-    },
-    {
-      name: "BUSINESS CONSULTING LOGISTIQUES",
+      name: "BUSCOLOG",
       country: "Congo",
-      logo: null,
+      logo: partnerBuscolog,
     },
     {
-      name: "BANQUE DE DÉVELOPPEMENT DES ÉTATS DE L'AFRIQUE CENTRALE",
+      name: "BDEAC",
       country: "Afrique Centrale",
-      logo: null,
+      logo: partnerBdeac,
+    },
+    {
+      name: "SITTRA",
+      country: "Congo",
+      logo: partnerSittra,
+    },
+    {
+      name: "RSM",
+      country: "International",
+      logo: partnerRsm,
+    },
+    {
+      name: "iSNB",
+      country: "Congo",
+      logo: partnerIsnb,
+    },
+    {
+      name: "GZB CONGO",
+      country: "Congo",
+      logo: partnerGzb,
+    },
+    {
+      name: "LA CONGOLAISE AGRICOLE",
+      country: "Congo",
+      logo: partnerCongAgricole,
+    },
+    {
+      name: "SIEENE",
+      country: "International",
+      logo: partnerSieene,
     },
   ];
 
@@ -58,25 +87,19 @@ const Partners = () => {
           </div>
 
           {/* Partners Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {partners.map((partner, index) => (
               <div
                 key={partner.name}
                 className="group p-6 bg-card rounded-xl border border-border hover:border-secondary/30 transition-all duration-300 hover-lift flex flex-col items-center text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 mb-4 rounded-full bg-muted flex items-center justify-center group-hover:bg-secondary/10 transition-colors overflow-hidden">
-                  {partner.logo ? (
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="w-12 h-12 object-contain"
-                    />
-                  ) : (
-                    <span className="text-2xl font-heading font-bold text-secondary">
-                      {partner.name.charAt(0)}
-                    </span>
-                  )}
+                <div className="w-20 h-20 mb-4 rounded-lg bg-background flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-full h-full object-contain p-1"
+                  />
                 </div>
                 <h4 className="font-heading font-semibold text-sm mb-1 group-hover:text-secondary transition-colors">
                   {partner.name}
