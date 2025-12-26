@@ -185,11 +185,11 @@ const Activities = () => {
                   className="group bg-card rounded-2xl overflow-hidden shadow-card hover-lift"
                 >
                   {/* Photo */}
-                  <div className="relative h-48 bg-muted overflow-hidden">
+                  <div className="relative h-48 bg-white overflow-hidden">
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   {/* Name and Title */}
