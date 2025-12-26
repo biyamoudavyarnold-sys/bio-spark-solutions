@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Calendar, MapPin, Users, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, Users, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import siteVisit from "@/assets/site-visit.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
@@ -16,6 +16,11 @@ import managerQualite from "@/assets/manager-qualite.jpg";
 import managerInformatiques from "@/assets/manager-informatiques.jpg";
 import managerJuridique from "@/assets/manager-juridique.jpg";
 import managerEnvironnement from "@/assets/manager-environnement.jpg";
+import conferenceOser1 from "@/assets/conference-oser-1.jpg";
+import conferenceOser2 from "@/assets/conference-oser-2.jpg";
+import conferenceOser3 from "@/assets/conference-oser-3.jpg";
+import conferenceOser4 from "@/assets/conference-oser-4.jpg";
+import conferenceOser5 from "@/assets/conference-oser-5.jpg";
 
 const teamMembers = [
   { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", photo: managerAdministratif },
@@ -200,11 +205,174 @@ const Activities = () => {
     },
   ];
 
-  const conferencePhotos = [
-    { image: conferenceOser, alt: "Conférence OSER - Vue 1" },
-    { image: activityBiogas, alt: "Conférence OSER - Vue 2" },
-    { image: teamMeeting, alt: "Conférence OSER - Vue 3" },
-  ];
+  // Conference OSER Carousel Component
+  const ConferenceCarousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    
+    const conferencePhotos = [
+      { image: conferenceOser1, caption: "Équipe BIOENERGIES CONGO au stand OSER" },
+      { image: conferenceOser2, caption: "Présentation de nos solutions" },
+      { image: conferenceOser3, caption: "Networking avec les participants" },
+      { image: conferenceOser4, caption: "Entrée au Port Autonome" },
+      { image: conferenceOser5, caption: "L'équipe au tapis rouge" },
+    ];
+
+    useEffect(() => {
+      if (!isAutoPlaying) return;
+      const interval = setInterval(() => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % conferencePhotos.length);
+          setIsTransitioning(false);
+        }, 300);
+      }, 3500);
+      return () => clearInterval(interval);
+    }, [isAutoPlaying, conferencePhotos.length]);
+
+    const goToPrev = () => {
+      setIsAutoPlaying(false);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev - 1 + conferencePhotos.length) % conferencePhotos.length);
+        setIsTransitioning(false);
+      }, 300);
+    };
+
+    const goToNext = () => {
+      setIsAutoPlaying(false);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % conferencePhotos.length);
+        setIsTransitioning(false);
+      }, 300);
+    };
+
+    const goToSlide = (index: number) => {
+      setIsAutoPlaying(false);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setIsTransitioning(false);
+      }, 300);
+    };
+
+    return (
+      <div className="max-w-5xl mx-auto">
+        <div 
+          className="relative rounded-3xl overflow-hidden shadow-2xl bg-card"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          {/* Main Image Container with Ken Burns effect */}
+          <div className="relative h-[350px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            {conferencePhotos.map((photo, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-all duration-700 ease-out ${
+                  index === currentIndex 
+                    ? `opacity-100 ${isTransitioning ? 'scale-100' : 'scale-105'}` 
+                    : "opacity-0 scale-110"
+                }`}
+                style={{
+                  zIndex: index === currentIndex ? 10 : 0,
+                  animation: index === currentIndex && !isTransitioning ? 'kenBurns 8s ease-out forwards' : 'none'
+                }}
+              >
+                <img
+                  src={photo.image}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent z-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 via-transparent to-foreground/40 z-20" />
+            
+            {/* Caption with animation */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-30">
+              <div className={`transform transition-all duration-500 ${isTransitioning ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100'}`}>
+                <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/90 text-secondary-foreground text-sm font-medium mb-4 shadow-lg">
+                  Photo {currentIndex + 1} / {conferencePhotos.length}
+                </span>
+                <h4 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl text-primary-foreground mb-2">
+                  {conferencePhotos[currentIndex]?.caption}
+                </h4>
+                <p className="text-primary-foreground/80 text-sm md:text-base">
+                  Conférence OSER 2025 - Port Autonome de Pointe-Noire
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation Arrows with glow effect */}
+            <button
+              onClick={goToPrev}
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-background/30 backdrop-blur-md border border-primary-foreground/30 flex items-center justify-center text-primary-foreground hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all duration-300 group shadow-xl"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-6 h-6 group-hover:scale-125 transition-transform" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-background/30 backdrop-blur-md border border-primary-foreground/30 flex items-center justify-center text-primary-foreground hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all duration-300 group shadow-xl"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-6 h-6 group-hover:scale-125 transition-transform" />
+            </button>
+
+            {/* Play/Pause Button */}
+            <button
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-background/30 backdrop-blur-md border border-primary-foreground/30 flex items-center justify-center text-primary-foreground hover:bg-secondary hover:text-secondary-foreground transition-all duration-300"
+              aria-label={isAutoPlaying ? "Pause" : "Play"}
+            >
+              {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+            </button>
+
+            {/* Progress Bar */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-primary-foreground/20 z-30">
+              <div 
+                className="h-full bg-secondary transition-all duration-300"
+                style={{ 
+                  width: `${((currentIndex + 1) / conferencePhotos.length) * 100}%`,
+                  transition: 'width 0.5s ease-out'
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Thumbnail Strip */}
+          <div className="bg-gradient-to-r from-card via-muted to-card p-4 md:p-6 border-t border-border">
+            <div className="flex items-center justify-center gap-3 md:gap-4">
+              {conferencePhotos.map((photo, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`relative flex-shrink-0 w-16 h-12 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-all duration-500 ${
+                    index === currentIndex 
+                      ? "border-secondary ring-4 ring-secondary/40 scale-110 shadow-lg" 
+                      : "border-transparent opacity-50 hover:opacity-100 hover:border-muted-foreground/40 hover:scale-105"
+                  }`}
+                >
+                  <img
+                    src={photo.image}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover"
+                  />
+                  {index === currentIndex && (
+                    <div className="absolute inset-0 bg-secondary/20 animate-pulse" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section id="activites" className="py-20 md:py-32 bg-muted">
@@ -271,21 +439,7 @@ const Activities = () => {
                 Action commerciale à la conférence OSER tenue le samedi 15 novembre 2025, au Port Autonome de Pointe-Noire
               </p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {conferencePhotos.map((photo, index) => (
-                <div
-                  key={index}
-                  className="group relative h-64 rounded-2xl overflow-hidden shadow-card"
-                >
-                  <img
-                    src={photo.image}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-secondary/20 group-hover:bg-transparent transition-colors" />
-                </div>
-              ))}
-            </div>
+            <ConferenceCarousel />
           </div>
 
           {/* Pilot Team Section */}
