@@ -56,7 +56,7 @@ const FounderMessage = () => {
                   </p>
                   
                   <p>
-                    Après des nombreuses interrogations sur le but même de notre existence sur terre et ce qu'on offrir au monde en général et au Congo-Brazzaville en particulier qui pourrait marquer notre passage dans cette vie en fonction des potentiels qui nous ont été donné par Dieu, une mission nous est confié : celle d'apporter des solutions aux problèmes quotidiens des populations liés aux énergies.
+                    Après de nombreuses interrogations sur le but même de notre existence sur terre et ce qu'on a à offrir au monde en général et au Congo-Brazzaville en particulier qui pourrait marquer notre passage dans cette vie en fonction des potentiels qui nous ont été donnés par Dieu, une mission nous est confiée : celle d'apporter des solutions aux problèmes quotidiens des populations liés aux énergies.
                   </p>
 
                   <p>
