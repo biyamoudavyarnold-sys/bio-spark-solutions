@@ -6,15 +6,6 @@ import mayDay from "@/assets/may-day.jpg";
 import conferenceOser from "@/assets/conference-oser.jpg";
 import activityBiogas from "@/assets/activity-biogas.jpg";
 import pilotTeam from "@/assets/pilot-team.jpg";
-import managerEnvironnement from "@/assets/manager-environnement.jpg";
-import managerJuridique from "@/assets/manager-juridique.jpg";
-import managerExploitation from "@/assets/manager-exploitation.jpg";
-import managerInformatiques from "@/assets/manager-informatiques.jpg";
-import managerQualite from "@/assets/manager-qualite.jpg";
-import managerCommercial from "@/assets/manager-commercial.jpg";
-import managerOperations from "@/assets/manager-operations.jpg";
-import managerRH from "@/assets/manager-rh.jpg";
-import managerAdministratif from "@/assets/manager-administratif.jpg";
 
 const Activities = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -170,27 +161,25 @@ const Activities = () => {
             {/* Individual Team Members */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-                { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", photo: managerAdministratif },
-                { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines", photo: managerCommercial },
-                { name: "Ampère Claude NTONSI KOUBEYA", title: "Manager Exploitation", photo: managerExploitation },
-                { name: "Nidel Steeve MOUANDZA MAKEMI", title: "Manager Opérations", photo: managerOperations },
-                { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing", photo: managerRH },
-                { name: "Jean-Bernard MADZOU", title: "Manager Qualité-Hygiène Sécurité-Environnement & Énergétique", photo: managerQualite },
-                { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", photo: managerInformatiques },
-                { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", photo: managerJuridique },
-                { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement", photo: managerEnvironnement },
+                { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier" },
+                { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines" },
+                { name: "Ampère Claude NTONSI KOUBEYA", title: "Manager Exploitation" },
+                { name: "Nidel Steeve MOUANDZA MAKEMI", title: "Manager Opérations" },
+                { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing" },
+                { name: "Jean-Bernard MADZOU", title: "Manager Qualité-Hygiène Sécurité-Environnement & Énergétique" },
+                { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques" },
+                { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux" },
+                { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement" },
               ].map((member, index) => (
                 <div
                   key={index}
                   className="group bg-card rounded-2xl overflow-hidden shadow-card hover-lift"
                 >
-                  {/* Photo */}
-                  <div className="relative h-48 bg-white overflow-hidden">
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-contain object-top group-hover:scale-105 transition-transform duration-500"
-                    />
+                  {/* Photo Placeholder */}
+                  <div className="relative h-48 bg-muted overflow-hidden flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-muted-foreground/20 flex items-center justify-center">
+                      <Users className="w-10 h-10 text-muted-foreground/50" />
+                    </div>
                   </div>
                   {/* Name and Title */}
                   <div className="p-4 text-center">
