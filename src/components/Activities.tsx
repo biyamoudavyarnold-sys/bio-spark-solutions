@@ -140,7 +140,9 @@ const Activities = () => {
                 <span>Les membres fondateurs de BIOENERGIES CONGO</span>
               </div>
             </div>
-            <div className="max-w-4xl mx-auto">
+
+            {/* Team Group Photo */}
+            <div className="max-w-4xl mx-auto mb-16">
               <div className="relative rounded-2xl overflow-hidden shadow-card group">
                 <img
                   src={pilotTeam}
@@ -154,6 +156,47 @@ const Activities = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Individual Team Members */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {[
+                { title: "Manager Administratif et Financier", hasPhoto: true },
+                { title: "Manager Ressources Humaines", hasPhoto: true },
+                { title: "Manager Exploitation", hasPhoto: true },
+                { title: "Manager Opérations", hasPhoto: true },
+                { title: "Manager Commercial et Marketing", hasPhoto: true },
+                { title: "Manager Qualité Hygiène Sécurité et Environnement", hasPhoto: true },
+                { title: "Manager des systèmes Informatiques", hasPhoto: true },
+                { title: "Manager Juridique et Contentieux", hasPhoto: false },
+                { title: "Responsable du Laboratoire", hasPhoto: true },
+              ].map((member, index) => (
+                <div
+                  key={index}
+                  className="group bg-card rounded-2xl overflow-hidden shadow-card hover-lift"
+                >
+                  {/* Photo placeholder */}
+                  <div className="relative h-48 bg-muted flex items-center justify-center overflow-hidden">
+                    {member.hasPhoto ? (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                        <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                          <Users className="w-10 h-10 text-primary/50" />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-full bg-muted flex items-center justify-center">
+                        <span className="text-muted-foreground text-sm">—</span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Title */}
+                  <div className="p-4 text-center">
+                    <h4 className="font-heading font-semibold text-sm group-hover:text-primary transition-colors">
+                      {member.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
