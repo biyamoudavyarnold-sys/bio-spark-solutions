@@ -161,15 +161,15 @@ const Activities = () => {
             {/* Individual Team Members */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {[
-                { title: "Manager Administratif et Financier", hasPhoto: true },
-                { title: "Manager Ressources Humaines", hasPhoto: true },
-                { title: "Manager Exploitation", hasPhoto: true },
-                { title: "Manager Opérations", hasPhoto: true },
-                { title: "Manager Commercial et Marketing", hasPhoto: true },
-                { title: "Manager Qualité Hygiène Sécurité et Environnement", hasPhoto: true },
-                { title: "Manager des systèmes Informatiques", hasPhoto: true },
-                { title: "Manager Juridique et Contentieux", hasPhoto: false },
-                { title: "Responsable du Laboratoire", hasPhoto: true },
+                { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", hasPhoto: true },
+                { name: "Martin KIHOUNDA DITOMENE", title: "Manager Ressources Humaines", hasPhoto: true },
+                { name: "Ampère Claude NTONSI KOUBEYA", title: "Manager Exploitation", hasPhoto: true },
+                { name: "Nidel Steeve MOUANDZA MAKEMI", title: "Manager Opérations", hasPhoto: true },
+                { name: "AMBARA née MOUASSA KITSOUKOU Kady Léna", title: "Manager Commercial & Marketing", hasPhoto: true },
+                { name: "Jean-Bernard MADZOU", title: "Manager Qualité-Hygiène Sécurité-Environnement & Énergétique", hasPhoto: true },
+                { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", hasPhoto: true },
+                { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", hasPhoto: false },
+                { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement", hasPhoto: true },
               ].map((member, index) => (
                 <div
                   key={index}
@@ -189,9 +189,12 @@ const Activities = () => {
                       </div>
                     )}
                   </div>
-                  {/* Title */}
+                  {/* Name and Title */}
                   <div className="p-4 text-center">
-                    <h4 className="font-heading font-semibold text-sm group-hover:text-primary transition-colors">
+                    <p className="font-heading font-bold text-sm text-foreground mb-1">
+                      {member.name}
+                    </p>
+                    <h4 className="font-medium text-xs text-primary">
                       {member.title}
                     </h4>
                   </div>
