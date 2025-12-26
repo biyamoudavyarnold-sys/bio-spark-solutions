@@ -179,18 +179,25 @@ const Activities = () => {
                 { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", photo: managerInformatiques },
                 { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", photo: managerJuridique },
                 { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement", photo: managerEnvironnement },
+                { name: "", title: "Responsable du Laboratoire", photo: null },
               ].map((member, index) => (
                 <div
                   key={index}
                   className="group bg-card rounded-2xl overflow-hidden shadow-card hover-lift"
                 >
                   {/* Photo */}
-                  <div className="relative h-48 bg-background overflow-hidden">
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-contain object-top group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div className="relative h-48 bg-muted overflow-hidden">
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-contain object-top group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-muted">
+                        <Users className="w-16 h-16 text-muted-foreground/40" />
+                      </div>
+                    )}
                   </div>
                   {/* Name and Title */}
                   <div className="p-4 text-center">
