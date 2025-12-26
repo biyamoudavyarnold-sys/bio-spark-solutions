@@ -9,37 +9,31 @@ const Products = () => {
       icon: Flame,
       name: "Biogaz",
       description: "Gaz de cuisine écologique produit à partir de la méthanisation des déchets organiques.",
-      color: "primary",
     },
     {
       icon: Lightbulb,
       name: "Electrigaz",
       description: "Électricité verte générée à partir de sources renouvelables.",
-      color: "secondary",
     },
     {
       icon: Sun,
       name: "Crédit Solaire",
       description: "Solutions de financement pour l'installation de panneaux solaires.",
-      color: "accent",
     },
     {
       icon: Award,
       name: "Crédit Carbone",
       description: "Certification et valorisation des crédits carbone pour les entreprises.",
-      color: "primary",
     },
     {
       icon: TreeDeciduous,
       name: "Engrais Écologiques",
       description: "Engrais bio produits à partir du digestat de la méthanisation.",
-      color: "secondary",
     },
     {
       icon: BookOpen,
       name: "Formations",
       description: "Énergie Solaire, Gestion des Déchets, Audits (Énergétique, Environnement et Déchets).",
-      color: "accent",
     },
   ];
 
@@ -74,26 +68,10 @@ const Products = () => {
               >
                 <div className="absolute inset-0 bg-gradient-primary rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity blur-xl" />
                 <div className="relative p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover-lift text-center">
-                  <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform ${
-                      product.color === "primary"
-                        ? "bg-gradient-primary"
-                        : product.color === "secondary"
-                        ? "bg-gradient-secondary"
-                        : "bg-gradient-accent"
-                    }`}
-                  >
-                    <product.icon className={`w-10 h-10 ${
-                      product.color === "accent" ? "text-accent-foreground" : "text-primary-foreground"
-                    }`} />
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform bg-gradient-primary">
+                    <product.icon className="w-10 h-10 text-primary-foreground" />
                   </div>
-                  <h3 className={`font-heading font-bold text-xl mb-3 ${
-                    product.color === "primary"
-                      ? "text-primary"
-                      : product.color === "secondary"
-                      ? "text-secondary"
-                      : "text-accent-dark"
-                  }`}>
+                  <h3 className="font-heading font-bold text-xl mb-3 text-primary">
                     {product.name}
                   </h3>
                   <p className="text-muted-foreground">{product.description}</p>
