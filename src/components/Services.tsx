@@ -1,4 +1,4 @@
-import { Recycle, Factory, Truck, Search, Zap, Leaf } from "lucide-react";
+import { Recycle, Factory, Truck, Search, Zap, Leaf, Sun, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Services = () => {
@@ -26,6 +26,11 @@ const Services = () => {
       description: "Fabrication d'engrais bio à partir de la valorisation des déchets organiques.",
     },
     {
+      icon: Sun,
+      title: "Énergie Solaire",
+      description: "Installation et maintenance de systèmes photovoltaïques pour une énergie propre et durable.",
+    },
+    {
       icon: Truck,
       title: "Distribution",
       description: "Réseau de distribution efficace pour nos produits énergétiques et écologiques.",
@@ -34,6 +39,11 @@ const Services = () => {
       icon: Search,
       title: "Inspections et Études d'Impact",
       description: "Audits environnementaux et études d'impact pour accompagner vos projets.",
+    },
+    {
+      icon: GraduationCap,
+      title: "Recherche, Développement et Formation",
+      description: "Innovation continue et programmes de formation pour développer les compétences dans le secteur des énergies renouvelables.",
     },
   ];
 
