@@ -42,7 +42,7 @@ const Services = () => {
     },
     {
       icon: GraduationCap,
-      title: "Recherche, Développement et Formation",
+      title: "R&D, Formation",
       description: "Innovation continue et programmes de formation pour développer les compétences dans le secteur des énergies renouvelables.",
     },
   ];
