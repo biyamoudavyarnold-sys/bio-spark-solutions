@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import UserMenu from "./UserMenu";
 
 const navLinks = [
   { href: "#accueil", label: "Accueil" },
@@ -50,6 +51,7 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
+            <UserMenu />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -76,6 +78,9 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
+              <div className="pt-2 border-t border-border">
+                <UserMenu />
+              </div>
             </div>
           </nav>
         )}
