@@ -33,9 +33,9 @@ const Hero = () => {
           </div>
 
           {/* Title */}
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-4 animate-slide-up">
-            <span className="text-primary-foreground">BIOENERGIES</span>{" "}
-            <span className="text-secondary">CONGO</span>
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-slide-up">
+            <span className="text-primary drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">BIOENERGIES</span>{" "}
+            <span className="text-secondary drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">CONGO</span>
           </h1>
 
           {/* Slogan */}
