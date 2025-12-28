@@ -17,8 +17,7 @@ const FounderMessage = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Mot du <span className="text-primary">Fondateur</span> &{" "}
-              <span className="text-secondary">CEO</span>
+              Mot du Fondateur & CEO
             </h2>
             <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
           </div>
@@ -50,7 +49,7 @@ const FounderMessage = () => {
             <div className="md:col-span-8 lg:col-span-9">
               <div className="relative">
                 <Quote className="absolute -top-4 -left-4 w-12 h-12 text-primary/20" />
-                <div className="space-y-6 text-foreground/80 leading-relaxed pl-8">
+                <div className="space-y-6 text-foreground leading-relaxed pl-8">
                   <p>
                     <span className="text-primary font-semibold">BIOENERGIES</span> n'est pas qu'une simple entreprise comme on pouvait la considérer, car derrière cette identité morale et professionnelle se révèle une identité divine traduite par la mission divine à travers le projet que nous déployons et accomplissons aujourd'hui.
                   </p>
