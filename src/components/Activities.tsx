@@ -21,6 +21,11 @@ import conferenceOser2 from "@/assets/conference-oser-2.jpg";
 import conferenceOser3 from "@/assets/conference-oser-3.jpg";
 import conferenceOser4 from "@/assets/conference-oser-4.jpg";
 import conferenceOser5 from "@/assets/conference-oser-5.jpg";
+import conferenceOser6 from "@/assets/conference-oser-6.jpg";
+import conferenceOser7 from "@/assets/conference-oser-7.jpg";
+import conferenceOser8 from "@/assets/conference-oser-8.jpg";
+import conferenceOser9 from "@/assets/conference-oser-9.jpg";
+import conferenceOser10 from "@/assets/conference-oser-10.jpg";
 
 const teamMembers = [
   { name: "TCHISSAMBOU BITELIKA née Rebecca NGOMA", title: "Manager Administratif et Financier", photo: managerAdministratif },
@@ -212,11 +217,16 @@ const Activities = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
     
     const conferencePhotos = [
-      { image: conferenceOser1, caption: "Équipe BIOENERGIES CONGO au stand OSER" },
-      { image: conferenceOser2, caption: "Présentation de nos solutions" },
-      { image: conferenceOser3, caption: "Networking avec les participants" },
-      { image: conferenceOser4, caption: "Entrée au Port Autonome" },
-      { image: conferenceOser5, caption: "L'équipe au tapis rouge" },
+      { image: conferenceOser1, caption: "Équipe BIOENERGIES CONGO au stand OSER", rotate: false },
+      { image: conferenceOser2, caption: "Présentation de nos solutions", rotate: false },
+      { image: conferenceOser3, caption: "Networking avec les participants", rotate: false },
+      { image: conferenceOser4, caption: "Entrée au Port Autonome", rotate: false },
+      { image: conferenceOser5, caption: "L'équipe au tapis rouge", rotate: false },
+      { image: conferenceOser6, caption: "Stand d'exposition BIOENERGIES CONGO", rotate: false },
+      { image: conferenceOser7, caption: "Présentation du kakemono", rotate: false },
+      { image: conferenceOser8, caption: "Notre équipe accueillante", rotate: false },
+      { image: conferenceOser9, caption: "Membre de l'équipe au stand", rotate: false },
+      { image: conferenceOser10, caption: "Toute l'équipe réunie", rotate: true },
     ];
 
     useEffect(() => {
@@ -259,9 +269,9 @@ const Activities = () => {
     };
 
     return (
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto relative">
         <div 
-          className="relative rounded-3xl overflow-hidden shadow-2xl bg-card"
+          className="relative rounded-3xl overflow-hidden shadow-2xl bg-card group/carousel"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
@@ -270,20 +280,22 @@ const Activities = () => {
             {conferencePhotos.map((photo, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 transition-all duration-700 ease-out ${
+                className={`absolute inset-0 transition-all duration-1000 ease-out ${
                   index === currentIndex 
-                    ? `opacity-100 ${isTransitioning ? 'scale-100' : 'scale-105'}` 
-                    : "opacity-0 scale-110"
+                    ? `opacity-100 ${isTransitioning ? 'scale-100 blur-sm' : 'scale-105 blur-0'}` 
+                    : "opacity-0 scale-110 blur-md"
                 }`}
                 style={{
                   zIndex: index === currentIndex ? 10 : 0,
-                  animation: index === currentIndex && !isTransitioning ? 'kenBurns 8s ease-out forwards' : 'none'
+                  animation: index === currentIndex && !isTransitioning ? 'kenBurns 10s ease-out forwards' : 'none'
                 }}
               >
                 <img
                   src={photo.image}
                   alt={photo.caption}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-transform duration-500 ${
+                    photo.rotate ? 'rotate-90 scale-150' : ''
+                  }`}
                 />
               </div>
             ))}
@@ -344,32 +356,50 @@ const Activities = () => {
             </div>
           </div>
 
-          {/* Thumbnail Strip */}
+          {/* Thumbnail Strip with scroll */}
           <div className="bg-gradient-to-r from-card via-muted to-card p-4 md:p-6 border-t border-border">
-            <div className="flex items-center justify-center gap-3 md:gap-4">
+            <div className="flex items-center justify-start gap-2 md:gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
               {conferencePhotos.map((photo, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`relative flex-shrink-0 w-16 h-12 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-all duration-500 ${
+                  className={`relative flex-shrink-0 w-14 h-10 md:w-20 md:h-14 rounded-lg overflow-hidden border-2 transition-all duration-500 ${
                     index === currentIndex 
-                      ? "border-secondary ring-4 ring-secondary/40 scale-110 shadow-lg" 
+                      ? "border-secondary ring-2 ring-secondary/50 scale-110 shadow-lg shadow-secondary/30" 
                       : "border-transparent opacity-50 hover:opacity-100 hover:border-muted-foreground/40 hover:scale-105"
                   }`}
                 >
                   <img
                     src={photo.image}
                     alt={photo.caption}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${photo.rotate ? 'rotate-90 scale-150' : ''}`}
                   />
                   {index === currentIndex && (
-                    <div className="absolute inset-0 bg-secondary/20 animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 to-transparent" />
                   )}
                 </button>
               ))}
             </div>
+            {/* Dot indicators for mobile */}
+            <div className="flex items-center justify-center gap-1.5 mt-3 md:hidden">
+              {conferencePhotos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? "w-6 bg-secondary" 
+                      : "w-1.5 bg-muted-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
+        
+        {/* Floating decorative elements */}
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
       </div>
     );
   };
