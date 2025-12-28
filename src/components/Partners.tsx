@@ -9,6 +9,10 @@ import partnerIsnb from "@/assets/partner-isnb.jpg";
 import partnerGzb from "@/assets/partner-gzb.jpg";
 import partnerCongAgricole from "@/assets/partner-congolaise-agricole.jpg";
 import partnerSieene from "@/assets/partner-sieene.jpg";
+import partnerFrisomat from "@/assets/partner-frisomat.jpg";
+import partnerLabor from "@/assets/partner-labor.jpg";
+import partnerFiga from "@/assets/partner-figa.jpg";
+import partnerFonea from "@/assets/partner-fonea.jpg";
 
 const Partners = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -63,6 +67,26 @@ const Partners = () => {
       name: "SIEENE",
       country: "International",
       logo: partnerSieene,
+    },
+    {
+      name: "FRISOMAT",
+      country: "International",
+      logo: partnerFrisomat,
+    },
+    {
+      name: "LABOR IMPROBUS",
+      country: "Congo",
+      logo: partnerLabor,
+    },
+    {
+      name: "FIGA",
+      country: "Congo",
+      logo: partnerFiga,
+    },
+    {
+      name: "FONEA",
+      country: "Congo",
+      logo: partnerFonea,
     },
   ];
 
