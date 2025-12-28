@@ -38,6 +38,7 @@ const teamMembers = [
   { name: "MVIRI HONDJUILA François Fabrice", title: "Manager Services Informatiques", photo: managerInformatiques },
   { name: "Vincent SAMBA", title: "Manager Juridique et Contentieux", photo: managerJuridique },
   { name: "Aude Belvarine Farelle NDZOULOU MATONDO", title: "Manager Environnement & Assainissement", photo: managerEnvironnement },
+  { name: "DALEBAYE BALOU Serda Princilia", title: "Responsable du Laboratoire", photo: managerLaboratoire },
 ];
 // Team Carousel Component
 const TeamCarousel = () => {
