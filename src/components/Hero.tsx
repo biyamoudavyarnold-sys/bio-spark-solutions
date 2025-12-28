@@ -53,7 +53,7 @@ const Hero = () => {
             {[
               { icon: Leaf, label: "Environnement", value: "100% Écologique" },
               { icon: Zap, label: "Énergies", value: "Renouvelables" },
-              { icon: Globe, label: "Impact", value: "Afrique Centrale" },
+              { icon: Globe, label: "Impact", value: "Afrique" },
             ].map((stat, index) => (
               <div
                 key={stat.label}
