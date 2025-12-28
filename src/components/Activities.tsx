@@ -16,7 +16,7 @@ import managerQualite from "@/assets/manager-qualite.jpg";
 import managerInformatiques from "@/assets/manager-informatiques.jpg";
 import managerJuridique from "@/assets/manager-juridique.jpg";
 import managerEnvironnement from "@/assets/manager-environnement.jpg";
-import managerLaboratoire from "@/assets/manager-laboratoire-nobg.png";
+import managerLaboratoire from "@/assets/manager-laboratoire-white.jpg";
 import conferenceOser1 from "@/assets/conference-oser-1.jpg";
 import conferenceOser2 from "@/assets/conference-oser-2.jpg";
 import conferenceOser3 from "@/assets/conference-oser-3.jpg";
