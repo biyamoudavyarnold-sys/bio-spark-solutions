@@ -54,7 +54,7 @@ const Partners = () => {
       logo: partnerIsnb,
     },
     {
-      name: "GZB CONGO",
+      name: "GTH CONGO",
       country: "Congo",
       logo: partnerGzb,
     },
