@@ -67,7 +67,7 @@ const FounderMessage = () => {
                   </p>
 
                   <p>
-                    Comme pour se sentir en forme, pour se maintenir, pour travailler, pour vivre…, l'être vivant pour ne pas dire l'être humain a besoin de l'énergie et une énergie naturelle et étant donné que l'Etre même est naturel. C'est ce qui traduit l'activité de <span className="text-primary font-semibold">BIOENERGIES</span> comme vous pouvez le constater que le mot est composé de deux (02) syllabes, <span className="text-primary font-bold">BIO</span> qui vient du naturel et <span className="text-secondary font-bold">ENERGIES</span> qui tire sa source de la nature d'où <span className="text-primary font-semibold">BIO</span><span className="text-secondary font-semibold">ENERGIES</span>.
+                    Comme pour se sentir en forme, pour se maintenir, pour travailler, pour vivre…, l'être vivant pour ne pas dire l'être humain a besoin de l'énergie et une énergie naturelle étant donné que l'Être même est naturel. C'est ce qui traduit l'activité de <span className="text-primary font-semibold">BIOENERGIES</span> comme vous pouvez le constater que le mot est composé de deux (02) syllabes, <span className="text-primary font-bold">BIO</span> qui vient du naturel et <span className="text-secondary font-bold">ENERGIES</span> qui tire sa source de la nature d'où <span className="text-primary font-semibold">BIO</span><span className="text-secondary font-semibold">ENERGIES</span>.
                   </p>
                 </div>
               </div>
