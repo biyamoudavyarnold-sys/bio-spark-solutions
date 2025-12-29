@@ -8,6 +8,7 @@ import Activities from "@/components/Activities";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import EmailRequestForm from "@/components/EmailRequestForm";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
@@ -34,6 +35,7 @@ const Index = () => {
           <Services />
           <Products />
           <Activities />
+          <EmailRequestForm />
           <Partners />
           <Contact />
         </main>
