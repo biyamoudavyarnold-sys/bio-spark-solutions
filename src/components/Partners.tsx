@@ -74,7 +74,7 @@ const Partners = () => {
       logo: partnerFrisomat,
     },
     {
-      name: "LABOR IMPROBUS",
+      name: "Mairie de Pointe Noire",
       country: "Congo",
       logo: partnerLabor,
     },
