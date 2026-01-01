@@ -1,5 +1,6 @@
 import { Flame, Lightbulb, Sun, TreeDeciduous, BookOpen, Award } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import productsVideo from "@/assets/videos/products-video.mp4";
 
 const Products = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -55,7 +56,20 @@ const Products = () => {
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Nos <span className="text-primary">Produits</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mb-8" />
+            
+            {/* Video Section */}
+            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto"
+              >
+                <source src={productsVideo} type="video/mp4" />
+              </video>
+            </div>
           </div>
 
           {/* Products Grid */}
