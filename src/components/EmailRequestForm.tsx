@@ -10,13 +10,19 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, User, Briefcase, Building2, Phone, Send, CheckCircle } from "lucide-react";
 import { z } from "zod";
 
+const phoneRegex = /^\+?[0-9\s\-\(\)]+$/;
+
 const emailRequestSchema = z.object({
   employee_name: z.string().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
   employee_position: z.string().min(2, "Le poste doit contenir au moins 2 caractères").max(100),
   department: z.string().min(1, "Veuillez sélectionner un département"),
   requested_email: z.string().email("Format d'email invalide").max(255),
-  phone_number: z.string().optional(),
-  notes: z.string().max(500).optional(),
+  phone_number: z.string()
+    .max(20, "Numéro trop long (max 20 caractères)")
+    .regex(phoneRegex, "Format de téléphone invalide")
+    .optional()
+    .or(z.literal('')),
+  notes: z.string().max(500, "Notes trop longues (max 500 caractères)").optional(),
 });
 
 const departments = [
@@ -33,6 +39,9 @@ const departments = [
   "Laboratoire",
   "Autre",
 ];
+
+const RATE_LIMIT_KEY = 'email_request_last_submission';
+const RATE_LIMIT_MS = 60000; // 1 minute cooldown
 
 const EmailRequestForm = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -76,6 +85,21 @@ const EmailRequestForm = () => {
     e.preventDefault();
     setErrors({});
 
+    // Rate limiting check
+    const lastSubmission = localStorage.getItem(RATE_LIMIT_KEY);
+    if (lastSubmission) {
+      const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission, 10);
+      if (timeSinceLastSubmission < RATE_LIMIT_MS) {
+        const secondsRemaining = Math.ceil((RATE_LIMIT_MS - timeSinceLastSubmission) / 1000);
+        toast({
+          title: "Veuillez patienter",
+          description: `Vous pourrez soumettre une nouvelle demande dans ${secondsRemaining} secondes.`,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     try {
       const validated = emailRequestSchema.parse(formData);
       setIsSubmitting(true);
@@ -94,6 +118,9 @@ const EmailRequestForm = () => {
         .insert([insertData]);
 
       if (error) throw error;
+
+      // Update rate limit timestamp on successful submission
+      localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
 
       setIsSuccess(true);
       toast({
