@@ -101,19 +101,21 @@ const Services = () => {
             </div>
           </div>
 
-          {/* Services Grid */}
+          {/* Services Grid with 3D cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover-lift"
+                className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 card-3d spotlight ripple-container"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 mb-4 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 mb-4 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-glow">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+                <h3 className="font-heading font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/80 transition-colors duration-300">{service.description}</p>
+                {/* Hover indicator line */}
+                <div className="h-0.5 w-0 group-hover:w-full bg-gradient-primary mt-4 transition-all duration-500 rounded-full" />
               </div>
             ))}
           </div>
@@ -130,7 +132,7 @@ const Services = () => {
             {subsidiaries.map((subsidiary, index) => (
               <div
                 key={subsidiary.name}
-                className={`p-6 rounded-2xl border-2 transition-all duration-300 hover-lift ${
+                className={`group p-6 rounded-2xl border-2 transition-all duration-500 card-3d relative overflow-hidden ${
                   subsidiary.color === "primary"
                     ? "border-primary bg-primary/5 hover:bg-primary/10"
                     : subsidiary.color === "secondary"
@@ -141,7 +143,17 @@ const Services = () => {
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <h4 className={`font-heading font-bold mb-3 ${
+                {/* Decorative corner */}
+                <div className={`absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                  subsidiary.color === "primary"
+                    ? "bg-gradient-to-bl from-primary/20 to-transparent"
+                    : subsidiary.color === "secondary"
+                    ? "bg-gradient-to-bl from-secondary/20 to-transparent"
+                    : subsidiary.color === "black"
+                    ? "bg-gradient-to-bl from-foreground/20 to-transparent"
+                    : "bg-gradient-to-bl from-accent/20 to-transparent"
+                }`} />
+                <h4 className={`font-heading font-bold mb-3 transition-transform duration-300 group-hover:translate-x-1 ${
                   subsidiary.color === "primary"
                     ? "text-primary"
                     : subsidiary.color === "secondary"
@@ -152,7 +164,17 @@ const Services = () => {
                 }`}>
                   {subsidiary.name}
                 </h4>
-                <p className="text-muted-foreground text-sm">{subsidiary.description}</p>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/80 transition-colors duration-300">{subsidiary.description}</p>
+                {/* Animated underline */}
+                <div className={`h-0.5 w-0 group-hover:w-1/2 mt-4 transition-all duration-500 rounded-full ${
+                  subsidiary.color === "primary"
+                    ? "bg-primary"
+                    : subsidiary.color === "secondary"
+                    ? "bg-secondary"
+                    : subsidiary.color === "black"
+                    ? "bg-foreground"
+                    : "bg-accent"
+                }`} />
               </div>
             ))}
           </div>
