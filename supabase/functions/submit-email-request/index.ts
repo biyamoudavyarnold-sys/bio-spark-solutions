@@ -9,8 +9,8 @@ const corsHeaders = {
 // For production scale, use Redis/Upstash
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
 
-const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000 // 5 minutes
-const MAX_REQUESTS_PER_IP = 3 // 3 requests per IP per 5 minutes
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000 // 1 hour (stricter to prevent abuse)
+const MAX_REQUESTS_PER_IP = 1 // 1 request per IP per hour (stricter for anonymous endpoint)
 
 function getClientIP(req: Request): string {
   // Try various headers that may contain the real client IP
