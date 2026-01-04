@@ -72,7 +72,7 @@ const Products = () => {
             </div>
           </div>
 
-          {/* Products Grid */}
+          {/* Products Grid with advanced effects */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <div
@@ -80,15 +80,22 @@ const Products = () => {
                 className="group relative"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="absolute inset-0 bg-gradient-primary rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity blur-xl" />
-                <div className="relative p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover-lift text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform bg-gradient-primary">
+                <div className="absolute inset-0 bg-gradient-primary rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 blur-xl animate-morph" />
+                <div className="relative p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 card-3d spotlight text-center overflow-hidden">
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-primary/5 to-transparent rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-secondary/5 to-transparent rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-primary shadow-glow relative z-10">
                     <product.icon className="w-10 h-10 text-primary-foreground" />
                   </div>
-                  <h3 className="font-heading font-bold text-xl mb-3 text-primary">
+                  <h3 className="font-heading font-bold text-xl mb-3 text-primary group-hover:text-gradient-animated transition-all duration-300 relative z-10">
                     {product.name}
                   </h3>
-                  <p className="text-muted-foreground">{product.description}</p>
+                  <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 relative z-10">{product.description}</p>
+                  
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-3/4 h-1 bg-gradient-primary rounded-t-full transition-all duration-500" />
                 </div>
               </div>
             ))}

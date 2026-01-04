@@ -97,26 +97,48 @@ const Presentation = () => {
             ))}
           </div>
 
-          {/* Mission & Vision */}
+          {/* Mission & Vision with enhanced effects */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="p-8 bg-primary rounded-2xl text-primary-foreground">
-              <div className="flex items-center gap-3 mb-4">
-                <Target className="w-8 h-8" />
-                <h3 className="font-heading font-bold text-2xl">Notre Mission</h3>
+            <div className="group p-8 bg-primary rounded-2xl text-primary-foreground relative overflow-hidden card-3d">
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary-foreground rounded-full blur-3xl animate-morph" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary-foreground rounded-full blur-2xl animate-morph" style={{ animationDelay: '2s' }} />
               </div>
-              <p className="leading-relaxed opacity-95">
-                Révolutionner l'écosystème énergétique africain en transformant les défis environnementaux en opportunités durables, propulsant les entreprises vers la neutralité carbone grâce à nos innovations technologiques de pointe.
-              </p>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary-foreground/20 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-heading font-bold text-2xl">Notre Mission</h3>
+                </div>
+                <p className="leading-relaxed opacity-95">
+                  Révolutionner l'écosystème énergétique africain en transformant les défis environnementaux en opportunités durables, propulsant les entreprises vers la neutralité carbone grâce à nos innovations technologiques de pointe.
+                </p>
+              </div>
+              {/* Corner decoration */}
+              <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary-foreground/30 rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
-            <div className="p-8 bg-secondary rounded-2xl text-secondary-foreground">
-              <div className="flex items-center gap-3 mb-4">
-                <Eye className="w-8 h-8" />
-                <h3 className="font-heading font-bold text-2xl">Notre Vision</h3>
+            <div className="group p-8 bg-secondary rounded-2xl text-secondary-foreground relative overflow-hidden card-3d">
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-40 h-40 bg-secondary-foreground rounded-full blur-3xl animate-morph" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-secondary-foreground rounded-full blur-2xl animate-morph" style={{ animationDelay: '3s' }} />
               </div>
-              <p className="leading-relaxed opacity-95">
-                Devenir le leader technologique incontournable de la transition énergétique en Afrique, créant un impact positif mesurable sur l'environnement et l'économie continentale par nos solutions innovantes.
-              </p>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-secondary-foreground/20 group-hover:scale-110 transition-transform duration-300">
+                    <Eye className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-heading font-bold text-2xl">Notre Vision</h3>
+                </div>
+                <p className="leading-relaxed opacity-95">
+                  Devenir le leader technologique incontournable de la transition énergétique en Afrique, créant un impact positif mesurable sur l'environnement et l'économie continentale par nos solutions innovantes.
+                </p>
+              </div>
+              {/* Corner decoration */}
+              <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-secondary-foreground/30 rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </div>
 
