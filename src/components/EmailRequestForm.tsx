@@ -85,7 +85,7 @@ const EmailRequestForm = () => {
     e.preventDefault();
     setErrors({});
 
-    // Rate limiting check
+    // Client-side rate limiting (UX only, real security is server-side)
     const lastSubmission = localStorage.getItem(RATE_LIMIT_KEY);
     if (lastSubmission) {
       const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission, 10);
@@ -104,7 +104,7 @@ const EmailRequestForm = () => {
       const validated = emailRequestSchema.parse(formData);
       setIsSubmitting(true);
 
-      const insertData = {
+      const requestData = {
         employee_name: validated.employee_name,
         employee_position: validated.employee_position,
         department: validated.department,
@@ -113,11 +113,28 @@ const EmailRequestForm = () => {
         notes: validated.notes || null,
       };
 
-      const { error } = await supabase
-        .from("email_requests")
-        .insert([insertData]);
+      // Use edge function for per-IP rate limiting and secure submission
+      const { data, error } = await supabase.functions.invoke('submit-email-request', {
+        body: requestData,
+      });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(error.message || 'Submission failed');
+      }
+
+      if (data?.error) {
+        // Handle rate limit error from edge function
+        if (data.retryAfterSeconds) {
+          toast({
+            title: "Trop de demandes",
+            description: `Veuillez réessayer dans ${data.retryAfterSeconds} secondes.`,
+            variant: "destructive",
+          });
+          return;
+        }
+        throw new Error(data.error);
+      }
 
       // Update rate limit timestamp on successful submission
       localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
@@ -153,7 +170,7 @@ const EmailRequestForm = () => {
       } else {
         toast({
           title: "Erreur",
-          description: "Une erreur est survenue lors de l'envoi de la demande.",
+          description: error instanceof Error ? error.message : "Une erreur est survenue lors de l'envoi de la demande.",
           variant: "destructive",
         });
       }
