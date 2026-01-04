@@ -71,61 +71,57 @@ const Contact = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form with glass effect */}
-            <div className="bg-card p-8 rounded-2xl shadow-card glass relative overflow-hidden">
-              {/* Decorative background */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-tr-2xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-secondary/10 to-transparent rounded-bl-2xl" />
-              
-              <h3 className="font-heading font-bold text-xl mb-6 relative z-10">Envoyez-nous un message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+            {/* Contact Form */}
+            <div className="bg-card p-8 rounded-2xl shadow-card">
+              <h3 className="font-heading font-bold text-xl mb-6">Envoyez-nous un message</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="group">
-                    <label className="block text-sm font-medium mb-2 group-focus-within:text-primary transition-colors">Nom complet</label>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Nom complet</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:border-primary/30"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                       required
                     />
                   </div>
-                  <div className="group">
-                    <label className="block text-sm font-medium mb-2 group-focus-within:text-primary transition-colors">Email</label>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Email</label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:border-primary/30"
+                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                       required
                     />
                   </div>
                 </div>
-                <div className="group">
-                  <label className="block text-sm font-medium mb-2 group-focus-within:text-primary transition-colors">Sujet</label>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Sujet</label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 hover:border-primary/30"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                     required
                   />
                 </div>
-                <div className="group">
-                  <label className="block text-sm font-medium mb-2 group-focus-within:text-primary transition-colors">Message</label>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message</label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={5}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none hover:border-primary/30"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
                     required
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-primary text-primary-foreground font-heading font-semibold rounded-lg transition-all duration-300 hover:shadow-glow hover:-translate-y-1 ripple-container magnetic-hover group"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-primary text-primary-foreground font-heading font-semibold rounded-lg hover:opacity-90 transition-opacity"
                 >
-                  <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                  <Send className="w-5 h-5" />
                   Envoyer le message
                 </button>
               </form>

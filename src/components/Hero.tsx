@@ -1,12 +1,7 @@
 import { ArrowDown, Leaf, Zap, Globe } from "lucide-react";
 import heroVideo from "@/assets/videos/hero-video.mp4";
-import FloatingParticles from "./FloatingParticles";
-import AnimatedCounter from "./AnimatedCounter";
-import { useMouseParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
-  const mousePosition = useMouseParallax(0.02);
-
   return (
     <section
       id="accueil"
@@ -26,57 +21,32 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 
-      {/* Floating Particles */}
-      <FloatingParticles count={30} />
-
-      {/* Animated particles with parallax */}
+      {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-morph"
-          style={{
-            transform: `translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)`,
-          }}
-        />
-        <div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-morph"
-          style={{
-            transform: `translate(${mousePosition.x * -1.5}px, ${mousePosition.y * -1.5}px)`,
-            animationDelay: "2s",
-          }}
-        />
-        <div 
-          className="absolute top-1/2 right-1/3 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-morph"
-          style={{
-            transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-            animationDelay: "4s",
-          }}
-        />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "4s" }} />
       </div>
 
       {/* Content */}
-      <div 
-        className="relative z-10 container mx-auto px-4 text-center"
-        style={{
-          transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
-        }}
-      >
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Logo Animation */}
-          <div className="mb-8 animate-elastic">
-            <div className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6 animate-glow-pulse gradient-border">
+          <div className="mb-8 animate-scale-in">
+            <div className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6">
               <Leaf className="w-12 h-12 md:w-16 md:h-16 text-primary-foreground animate-pulse-slow" />
             </div>
           </div>
 
-          {/* Title with gradient animation */}
+          {/* Title */}
           <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-slide-up">
-            <span className="text-gradient-animated drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">BIOENERGIES</span>{" "}
+            <span className="text-primary drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">BIOENERGIES</span>{" "}
             <span className="text-secondary drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">CONGO</span>
           </h1>
 
-          {/* Slogan with text reveal */}
+          {/* Slogan */}
           <p className="text-accent font-heading font-semibold text-lg md:text-xl mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <span className="inline-block">All To Save Area / Tout Pour Sauver l'Environnement</span>
+            All To Save Area / Tout Pour Sauver l'Environnement
           </p>
 
           {/* Description */}
@@ -84,33 +54,29 @@ const Hero = () => {
             Pionnier de la méthanisation, du crédit carbone et des énergies renouvelables au Congo-Brazzaville et en Afrique
           </p>
 
-          {/* Stats with 3D cards and animated counters */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 stagger-children">
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: Leaf, label: "Écologique", value: 100, suffix: "%" },
-              { icon: Zap, label: "Énergies Vertes", value: 5, suffix: " filiales" },
-              { icon: Globe, label: "Impact Continental", value: 2025, prefix: "Depuis " },
+              { icon: Leaf, label: "Environnement", value: "100% Écologique" },
+              { icon: Zap, label: "Énergies", value: "Renouvelables" },
+              { icon: Globe, label: "Impact", value: "Afrique" },
             ].map((stat, index) => (
               <div
                 key={stat.label}
-                className="group flex flex-col items-center p-6 rounded-xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 card-3d ripple-container"
+                className="flex flex-col items-center p-6 rounded-xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 hover-lift animate-scale-in"
                 style={{ animationDelay: `${0.6 + index * 0.1}s` }}
               >
-                <div className="w-14 h-14 mb-3 rounded-xl bg-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-accent icon" />
-                </div>
-                <span className="text-primary-foreground font-heading font-bold text-2xl">
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
-                </span>
+                <stat.icon className="w-10 h-10 text-accent mb-3" />
+                <span className="text-primary-foreground font-heading font-bold text-lg">{stat.value}</span>
                 <span className="text-primary-foreground/70 text-sm">{stat.label}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA with ripple effect */}
+          {/* CTA */}
           <a
             href="#fondateur"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-accent-foreground font-heading font-semibold rounded-full hover:bg-accent-light transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-2 animate-slide-up ripple-container magnetic-hover"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-accent-foreground font-heading font-semibold rounded-full hover:bg-accent-light transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 animate-slide-up"
             style={{ animationDelay: "0.8s" }}
           >
             Découvrir notre mission
@@ -119,9 +85,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator with glow */}
+      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center pt-2 animate-glow-pulse">
+        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full animate-pulse" />
         </div>
       </div>

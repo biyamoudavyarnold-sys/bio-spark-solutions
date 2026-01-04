@@ -110,31 +110,25 @@ const Partners = () => {
             <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
           </div>
 
-          {/* Partners Grid with enhanced effects */}
+          {/* Partners Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {partners.map((partner, index) => (
               <div
                 key={partner.name}
-                className="group p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-500 card-3d spotlight flex flex-col items-center text-center relative overflow-hidden"
-                style={{ animationDelay: `${index * 0.05}s` }}
+                className="group p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-all duration-300 hover-lift flex flex-col items-center text-center"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="w-20 h-20 mb-4 rounded-lg bg-background flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg transition-all duration-500 overflow-hidden relative z-10">
+                <div className="w-20 h-20 mb-4 rounded-lg bg-background flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-1"
                   />
                 </div>
-                <h4 className="font-heading font-semibold text-sm mb-1 group-hover:text-primary transition-colors duration-300 relative z-10">
+                <h4 className="font-heading font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
                   {partner.name}
                 </h4>
-                <span className="text-muted-foreground text-xs group-hover:text-foreground/60 transition-colors duration-300 relative z-10">{partner.country}</span>
-                
-                {/* Bottom accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <span className="text-muted-foreground text-xs">{partner.country}</span>
               </div>
             ))}
           </div>
