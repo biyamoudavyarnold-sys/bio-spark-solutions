@@ -16,9 +16,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate inputs
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+    
+    if (!name || !email || !subject || !message) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Open email client with pre-filled message
+    const mailtoBody = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:contact@bioenergies-congo.com?subject=${encodeURIComponent(subject)}&body=${mailtoBody}`;
+    
+    window.location.href = mailtoLink;
+    
     toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
+      title: "Client email ouvert",
+      description: "Veuillez envoyer le message depuis votre application email.",
     });
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
