@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Calendar, MapPin, Users, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import activitiesVideo from "@/assets/videos/activities-video.mp4";
+import activitiesVideo from "@/assets/videos/founder-activities.mp4";
 import siteVisit from "@/assets/site-visit.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
 import mayDay from "@/assets/may-day.jpg";

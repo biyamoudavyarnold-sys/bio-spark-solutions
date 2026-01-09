@@ -1,6 +1,6 @@
 import { Flame, Lightbulb, Sun, TreeDeciduous, BookOpen, Award } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import productsVideo from "@/assets/videos/products-video.mp4";
+import productsVideo from "@/assets/videos/founder-products.mp4";
 
 const Products = () => {
   const { ref, isVisible } = useScrollReveal();

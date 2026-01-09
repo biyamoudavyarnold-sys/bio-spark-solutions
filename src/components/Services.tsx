@@ -1,6 +1,6 @@
 import { Recycle, Factory, Truck, Search, Zap, Leaf, Sun, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import servicesVideo from "@/assets/videos/services-video.mp4";
+import servicesVideo from "@/assets/videos/founder-services.mp4";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
