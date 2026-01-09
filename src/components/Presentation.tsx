@@ -1,6 +1,6 @@
 import { Building2, Calendar, MapPin, Target, Eye, Award, Shield, Users, Heart, Briefcase } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import presentationVideo from "@/assets/videos/presentation-video.mp4";
+import presentationVideo from "@/assets/videos/founder-presentation.mp4";
 
 const Presentation = () => {
   const { ref, isVisible } = useScrollReveal();
