@@ -1,6 +1,5 @@
 import { Building2, Calendar, MapPin, Target, Eye, Award, Shield, Users, Heart, Briefcase } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import presentationVideo from "@/assets/videos/founder-presentation.mp4";
 
 const Presentation = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -52,20 +51,7 @@ const Presentation = () => {
             <p className="text-muted-foreground max-w-3xl mx-auto">
               Fondée en 2021 par Prince MAMPOUELE MAKAYA, ingénieur en Pétrochimie et Énergies Renouvelables de l'université THE AMERICAN CHRISTIAN LIBERAL ARTS UNIVERSITY IN CONGO (DRC), <span className="text-primary font-semibold">BIOENERGIES</span> <span className="text-secondary font-semibold">CONGO</span> révolutionne l'écosystème énergétique africain par l'innovation technologique.
             </p>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6 mb-8" />
-            
-            {/* Video Section */}
-            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto"
-              >
-                <source src={presentationVideo} type="video/mp4" />
-              </video>
-            </div>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
           </div>
 
           {/* Pioneer Badge */}
