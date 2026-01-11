@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useToast } from "@/hooks/use-toast";
 import QRCodeComponent from "./QRCode";
+import contactVideo from "@/assets/videos/contact-section.mp4";
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -81,6 +82,14 @@ const Contact = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
+          {/* Video Banner */}
+          <div className="relative rounded-2xl overflow-hidden mb-12 aspect-video max-w-4xl mx-auto shadow-2xl">
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+              <source src={contactVideo} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-muted/80 via-transparent to-transparent" />
+          </div>
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
