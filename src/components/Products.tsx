@@ -52,11 +52,11 @@ const Products = () => {
           }`}
         >
           {/* Video Banner */}
-          <div className="relative rounded-2xl overflow-hidden mb-12 aspect-video max-w-4xl mx-auto shadow-2xl">
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+          <div className="relative rounded-2xl overflow-hidden mb-12 max-w-5xl mx-auto shadow-2xl bg-black/5">
+            <video autoPlay loop muted playsInline className="w-full h-auto max-h-[600px] object-contain mx-auto">
               <source src={productsVideo} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
 
           {/* Section Header */}
