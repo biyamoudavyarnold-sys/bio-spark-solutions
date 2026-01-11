@@ -1,6 +1,5 @@
 import { Recycle, Factory, Truck, Search, Zap, Leaf, Sun, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import servicesVideo from "@/assets/videos/founder-services.mp4";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -85,20 +84,7 @@ const Services = () => {
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Nos <span className="text-primary">Services</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mb-8" />
-            
-            {/* Video Section */}
-            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto"
-              >
-                <source src={servicesVideo} type="video/mp4" />
-              </video>
-            </div>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
           </div>
 
           {/* Services Grid */}

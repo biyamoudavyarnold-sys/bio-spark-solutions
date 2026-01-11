@@ -1,5 +1,5 @@
 import { ArrowDown, Leaf, Zap, Globe } from "lucide-react";
-import heroVideo from "@/assets/videos/hero-video.mp4";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
@@ -7,17 +7,13 @@ const Hero = () => {
       id="accueil"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Video */}
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src={heroBg}
+          alt="BIOENERGIES CONGO"
           className="w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 

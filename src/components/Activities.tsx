@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Calendar, MapPin, Users, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import activitiesVideo from "@/assets/videos/founder-activities.mp4";
 import siteVisit from "@/assets/site-visit.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
 import mayDay from "@/assets/may-day.jpg";
@@ -420,20 +419,7 @@ const Activities = () => {
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Nos <span className="text-primary">Activités</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mb-8" />
-            
-            {/* Video Section */}
-            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto"
-              >
-                <source src={activitiesVideo} type="video/mp4" />
-              </video>
-            </div>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
           </div>
 
           {/* Activities Grid */}
