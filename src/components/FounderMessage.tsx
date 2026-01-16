@@ -23,23 +23,28 @@ const FounderMessage = () => {
           </div>
 
           <div className="grid md:grid-cols-12 gap-12 items-start">
-            {/* Founder Image */}
+            {/* Founder Image with Ken Burns Animation */}
             <div className="md:col-span-4 lg:col-span-3">
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-primary rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur-xl" />
-                <div className="relative">
+              <div className="relative group animate-breathing-glow rounded-2xl">
+                <div className="absolute -inset-4 bg-gradient-primary rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 blur-xl" />
+                <div className="relative overflow-hidden rounded-2xl">
                   <img
                     src={founderImage}
                     alt="Prince MAMPOUELE MAKAYA - Fondateur & PDG"
-                    className="w-full rounded-2xl shadow-card object-cover aspect-[3/4]"
+                    className="w-full shadow-card object-cover aspect-[3/4] animate-ken-burns-founder"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-6 rounded-b-2xl">
-                    <h3 className="font-heading font-bold text-primary-foreground text-lg">
-                      Prince MAMPOUELE MAKAYA
-                    </h3>
-                    <p className="text-primary-foreground/80 text-sm">
-                      Fondateur & Président Directeur Général
-                    </p>
+                  {/* Elegant overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-primary/10 pointer-events-none" />
+                  {/* Name badge */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="backdrop-blur-sm bg-foreground/30 rounded-xl p-4 border border-primary-foreground/10">
+                      <h3 className="font-heading font-bold text-primary-foreground text-lg">
+                        Prince MAMPOUELE MAKAYA
+                      </h3>
+                      <p className="text-primary-foreground/80 text-sm">
+                        Fondateur & Président Directeur Général
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

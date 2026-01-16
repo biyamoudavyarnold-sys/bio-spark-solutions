@@ -304,6 +304,45 @@
   }
 }
 
+/* Ken Burns effect for founder - elegant slow zoom and pan */
+@keyframes kenBurnsFounder {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  50% {
+    transform: scale(1.12) translate(0, -2%);
+  }
+  75% {
+    transform: scale(1.08) translate(1%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+/* Breathing glow effect */
+@keyframes breathingGlow {
+  0%, 100% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.2), 0 0 60px hsl(var(--secondary) / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 50px hsl(var(--primary) / 0.4), 0 0 80px hsl(var(--secondary) / 0.2);
+  }
+}
+
+/* Animate Ken Burns founder */
+.animate-ken-burns-founder {
+  animation: kenBurnsFounder 20s ease-in-out infinite;
+}
+
+/* Animate breathing glow */
+.animate-breathing-glow {
+  animation: breathingGlow 4s ease-in-out infinite;
+}
+
 /* Shimmer effect */
 @keyframes shimmer {
   0% {
